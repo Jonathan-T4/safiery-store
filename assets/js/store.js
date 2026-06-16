@@ -24,7 +24,8 @@ window.Store = (function () {
   /* ---------------- lookups ---------------- */
   var prodIndex = {}; C.products.forEach(function (p) { prodIndex[p.id] = p; });
   var catIndex = {};  C.categories.forEach(function (c) { catIndex[c.id] = c; });
-  var tierIndex = {}; C.b2bTiers.forEach(function (t) { tierIndex[t.id] = t; });
+  // NB: B2B tiers are now resolved by the ERP (not from C.b2bTiers); tier()/pricing()
+  // read the cached ERP price map. C.b2bTiers/demoAccounts in the catalog are legacy.
 
   function byId(id) { return prodIndex[id] || null; }
   function category(id) { return catIndex[id] || null; }

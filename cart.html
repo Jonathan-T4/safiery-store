@@ -31,12 +31,20 @@
 
       function banner() {
         var t = Store.tier();
+        var s = Store.getSession();
         if (t) {
-          var s = Store.getSession();
+          // Signed in with a trade tier - show the live cart discount (tier() carries no
+          // fixed rate; the ERP resolves per-product, so derive % from the cart totals).
+          var tot = Store.cartTotals();
+          var pct = tot.subtotalRetail > 0 ? Math.round((tot.saving / tot.subtotalRetail) * 100) : 0;
           bannerEl.innerHTML = '<div class="trade-banner" style="margin-bottom:24px">' +
             Store.icon("shield") +
-            '<div style="flex:1"><strong>Trade pricing active</strong> <span class="muted">— ' + Store.esc(s.company || s.email) + '</span></div>' +
-            '<span class="tier-chip">' + t.name + ' · −' + Math.round(t.discount * 100) + '%</span></div>';
+            '<div style="flex:1"><strong>Trade pricing active</strong> <span class="muted">— ' + Store.esc(s.company || s.email || "") + '</span></div>' +
+            '<span class="tier-chip">' + Store.esc(t.name) + ' tier' + (pct > 0 ? ' · −' + pct + '%' : '') + '</span></div>';
+        } else if (Store.isTrade()) {
+          // Signed in but no trade tier set yet - standard pricing (matches account.html).
+          bannerEl.innerHTML = '<div class="notice" style="margin-bottom:24px; display:flex; gap:14px; align-items:center; flex-wrap:wrap">' +
+            Store.icon("user") + '<span style="flex:1">You\'re signed in' + (s && s.company ? ' as ' + Store.esc(s.company) : '') + '. No trade tier is set on your account yet, so standard pricing applies. <a href="mailto:sales@safiery.com?subject=Trade%20pricing" style="color:var(--accent)">Contact sales</a> about a trade account.</span></div>';
         } else {
           bannerEl.innerHTML = '<div class="notice" style="margin-bottom:24px; display:flex; gap:14px; align-items:center; flex-wrap:wrap">' +
             Store.icon("user") + '<span style="flex:1">Reseller or installer? <a href="account.html" style="color:var(--accent)">Log in</a> to apply your trade discount to this cart.</span></div>';
