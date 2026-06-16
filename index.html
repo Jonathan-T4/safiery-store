@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Safiery — Genset-Free Power for Land &amp; Water</title>
-  <meta name="description" content="Safiery solid-state lithium batteries, Scotty AI DC-DC, BMG alternators, STAR digital switching, tank monitoring and all-electric living. B2C &amp; trade pricing.">
+  <meta name="description" content="Safiery builds the complete electric power system: Scotty AI DC-DC, 10kW BMG alternators, solid-state lithium and STAR digital switching. Victron-native, B2B &amp; trade.">
   <link rel="icon" type="image/png" href="assets/img/safiery-logo-2021.png">
-  <link rel="stylesheet" href="assets/css/store.css?v=2">
+  <link rel="stylesheet" href="assets/css/store.css?v=3">
   <script type="module" src="https://unpkg.com/@google/model-viewer@^3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body data-nav="shop.html">
@@ -14,71 +14,138 @@
 
   <main id="main" tabindex="-1">
     <!-- HERO -->
-    <section class="hero"><div class="wrap"><div class="hero-grid">
-      <div>
-        <span class="eyebrow" data-reveal style="animation-delay:.05s">Marine · RV · Off-grid power systems</span>
-        <h1 data-reveal style="animation-delay:.12s">Adventure <span class="hl">without</span> a genset.</h1>
-        <p class="lede" data-reveal style="animation-delay:.2s">Solid-state lithium, AI-tuned DC-DC, bi-directional motor generators and Victron-native digital switching — engineered so you can live and travel anywhere, silently.</p>
-        <div class="hero-cta" data-reveal style="animation-delay:.28s">
-          <a class="btn btn-primary btn-lg" href="shop.html">Shop the range</a>
-          <a class="btn btn-ghost btn-lg" href="account.html">Trade login →</a>
-        </div>
-        <div class="hero-stats" data-reveal style="animation-delay:.36s">
-          <div class="hero-stat"><div class="n" data-stat-products>—</div><div class="l">Products</div></div>
-          <div class="hero-stat"><div class="n">10,000</div><div class="l">Cycle life</div></div>
-          <div class="hero-stat"><div class="n">5 yr</div><div class="l">Warranty</div></div>
-          <div class="hero-stat"><div class="n">VE.CAN</div><div class="l">Victron native</div></div>
-        </div>
+    <section class="hero hero--center"><div class="wrap">
+      <span class="eyebrow" data-reveal style="animation-delay:.05s">Marine · RV · Off-grid power systems</span>
+      <h1 data-reveal style="animation-delay:.12s">Adventure <span class="hl">without</span> a genset.</h1>
+      <p class="lede" data-reveal style="animation-delay:.2s">Solid-state lithium, AI-tuned DC-DC, bi-directional motor generators and Victron-native digital switching — the complete electric power system for living and travelling anywhere, silently.</p>
+      <div class="hero-cta" data-reveal style="animation-delay:.28s">
+        <a class="btn btn-primary btn-lg" href="shop.html">Shop the range</a>
+        <a class="btn btn-ghost btn-lg" href="account.html">Trade login →</a>
       </div>
-      <div class="hero-visual hero-3d" data-reveal style="animation-delay:.2s">
-        <model-viewer
-          id="scottyViewer"
-          class="scotty-viewer"
-          src="assets/models/scotty-1500-v3.glb"
-          poster="assets/img/scotty-poster.png"
-          alt="Interactive 3D model of the Scotty AI 1500W V3 bi-directional DC-DC converter"
-          camera-controls touch-action="pan-y"
-          auto-rotate auto-rotate-delay="500" rotation-per-second="20deg"
-          interaction-prompt="none"
-          shadow-intensity="0.85" shadow-softness="1"
-          exposure="1.0"
-          camera-orbit="40deg 78deg 105%"
-          ar ar-modes="webxr scene-viewer quick-look">
-          <button slot="ar-button" class="ar-btn">View in your space</button>
-          <div slot="progress-bar" class="m-progress"><div class="m-bar"></div></div>
-        </model-viewer>
-        <span class="viewer-badge mono"><span class="vb-dot"></span> Live 3D · drag to orbit</span>
-        <div class="viewer-controls">
-          <button class="vc-btn" data-spin aria-label="Pause rotation" title="Pause / resume spin"></button>
-          <button class="vc-btn" data-reset aria-label="Reset view" title="Reset view"></button>
-        </div>
+      <div class="hero-stats" data-reveal style="animation-delay:.36s">
+        <div class="hero-stat"><div class="n" data-stat-products>—</div><div class="l">Products</div></div>
+        <div class="hero-stat"><div class="n">10,000</div><div class="l">Cycle life</div></div>
+        <div class="hero-stat"><div class="n">5 yr</div><div class="l">Warranty</div></div>
+        <div class="hero-stat"><div class="n">VE.CAN</div><div class="l">Victron native</div></div>
       </div>
-    </div></div></section>
+    </div></section>
 
-    <!-- VALUE PROPS -->
+    <!-- WHAT WE MAKE — product pillars -->
+    <section class="section pillars"><div class="wrap">
+      <div class="section-head center">
+        <div><span class="eyebrow">What we make</span><h2>Four systems. One silent ecosystem.</h2>
+        <p>Every Safiery product talks the same language — VE.CAN and NMEA2000 — so the alternator, batteries, converter and switching work as one. Drag the models, explore the range.</p></div>
+      </div>
+
+      <!-- 01 · Scotty (interactive 3D, media right) -->
+      <div class="pillar" data-pillar>
+        <div class="pillar-body">
+          <span class="pillar-num">01</span>
+          <span class="eyebrow">Scotty AI DC-DC</span>
+          <h3>The AI brain of your DC system</h3>
+          <p>Scotty AI is a bi-directional DC-DC converter that auto-tunes to your alternator in two minutes — no programming. It charges 12, 24, 36 or 48V banks, protects the alternator with real-time thermal AI, and appears natively on your Victron Cerbo.</p>
+          <ul class="pillar-points">
+            <li>AI auto-tune in two minutes — plug &amp; play</li>
+            <li>1.5kW &amp; 3kW, fully bi-directional</li>
+            <li>100% VE.CAN / Victron compliant</li>
+          </ul>
+          <a class="btn btn-primary" href="shop.html?cat=scotty">Explore Scotty AI →</a>
+        </div>
+        <div class="pillar-media">
+          <model-viewer
+            id="scottyViewer"
+            class="scotty-viewer"
+            src="assets/models/scotty-1500-v3.glb"
+            poster="assets/img/scotty-poster.png"
+            alt="Interactive 3D model of the Scotty AI 1500W V3 bi-directional DC-DC converter"
+            camera-controls touch-action="pan-y"
+            auto-rotate auto-rotate-delay="500" rotation-per-second="20deg"
+            interaction-prompt="none"
+            shadow-intensity="0.85" shadow-softness="1"
+            exposure="1.0"
+            camera-orbit="40deg 78deg 105%"
+            ar ar-modes="webxr scene-viewer quick-look">
+            <button slot="ar-button" class="ar-btn">View in your space</button>
+            <div slot="progress-bar" class="m-progress"><div class="m-bar"></div></div>
+          </model-viewer>
+          <span class="viewer-badge mono"><span class="vb-dot"></span> Live 3D · drag to orbit</span>
+          <div class="viewer-controls">
+            <button class="vc-btn" data-spin aria-label="Pause rotation" title="Pause / resume spin"></button>
+            <button class="vc-btn" data-reset aria-label="Reset view" title="Reset view"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 · BMG (media left, 3D-ready) -->
+      <div class="pillar pillar--media-left" data-pillar>
+        <div class="pillar-media" data-glb="assets/models/bmg.glb" data-poster="assets/img/pillar-bmg.webp">
+          <img class="pillar-img" src="assets/img/pillar-bmg.webp" alt="Safiery 48V Bi-directional Motor Generator with Scotty AI and cabling kit">
+        </div>
+        <div class="pillar-body">
+          <span class="pillar-num">02</span>
+          <span class="eyebrow">Bi-directional Motor Generator</span>
+          <h3>10kW of silent power, off your engine</h3>
+          <p>The Safiery BMG replaces a genset. Mounted to your engine — J180, Volvo, Sprinter, ISUZU or pad mount — it generates up to 10kW at 48V and pairs with Scotty AI for instant 12V auxiliary power. No noise, no extra fuel, no maintenance.</p>
+          <ul class="pillar-points">
+            <li>Up to 10kW continuous at 48V</li>
+            <li>J180 · Volvo · Sprinter · ISUZU · pad mounts</li>
+            <li>Integrated Scotty AI for 12V auxiliary</li>
+          </ul>
+          <a class="btn btn-primary" href="shop.html?cat=bmg">Explore BMG →</a>
+        </div>
+      </div>
+
+      <!-- 03 · Solid State Lithium (media right) -->
+      <div class="pillar" data-pillar>
+        <div class="pillar-body">
+          <span class="pillar-num">03</span>
+          <span class="eyebrow">Solid State Lithium</span>
+          <h3>The safest lithium ever made</h3>
+          <p>Solid-electrolyte cells survive a nail through the cell, a 200kN crush, 2× overcharge and a dead short — and still deliver 10,000 cycles at 80% depth of discharge. Available in 12V and 48V, stackable, with a Victron-compatible CAN BMS.</p>
+          <ul class="pillar-points">
+            <li>10,000 cycles · 5-year warranty</li>
+            <li>Nail / crush / short safe — IEC 62619</li>
+            <li>12V &amp; 48V, stackable with concealed straps</li>
+          </ul>
+          <a class="btn btn-primary" href="shop.html?cat=48v-lithium">Explore batteries →</a>
+        </div>
+        <div class="pillar-media" data-glb="assets/models/solid-state.glb" data-poster="assets/img/pillar-battery.webp">
+          <img class="pillar-img" src="assets/img/pillar-battery.webp" alt="Safiery solid-state lithium battery range, 12V and 48V">
+        </div>
+      </div>
+
+      <!-- 04 · STAR Switching (media left) -->
+      <div class="pillar pillar--media-left" data-pillar>
+        <div class="pillar-media" data-glb="assets/models/star.glb" data-poster="assets/img/pillar-star.webp">
+          <img class="pillar-img" src="assets/img/pillar-star.webp" alt="Safiery STAR digital switching plugged into a Victron Cerbo">
+        </div>
+        <div class="pillar-body">
+          <span class="pillar-num">04</span>
+          <span class="eyebrow">STAR Digital Switching</span>
+          <h3>Victron-native digital switching</h3>
+          <p>STAR replaces fuse panels and relays with wireless and CAN digital switching — up to 150A across 12 channels, interchangeable icon keypads and phased-radar tank sensing. It drops straight onto your Cerbo with one-touch control.</p>
+          <ul class="pillar-points">
+            <li>Wireless + CAN, switching up to 150A</li>
+            <li>Interchangeable engraved icon keypads</li>
+            <li>Radar tank sensing, integrates with Victron</li>
+          </ul>
+          <a class="btn btn-primary" href="shop.html?cat=star-switching">Explore STAR →</a>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- WHY SAFIERY -->
     <section class="section" style="padding-top:20px"><div class="wrap">
       <div class="value-row" data-values></div>
     </div></section>
 
-    <!-- CATEGORIES -->
+    <!-- SHOP BY SYSTEM -->
     <section class="section"><div class="wrap">
       <div class="section-head">
         <div><span class="eyebrow">The catalogue</span><h2>Shop by system</h2></div>
         <a class="btn btn-ghost" href="shop.html">All products →</a>
       </div>
       <div class="cat-grid" data-cats></div>
-    </div></section>
-
-    <!-- TRADE CALLOUT -->
-    <section class="section" style="padding-top:0"><div class="wrap">
-      <div class="trade-banner" style="padding:30px 34px">
-        <div style="flex:1; min-width:260px">
-          <span class="eyebrow">For resellers &amp; installers</span>
-          <h2 style="font-size:30px; margin:10px 0 8px">Trade pricing, applied automatically.</h2>
-          <p class="muted" style="margin:0; max-width:60ch">Log in and your B2BKing tier discount (10–32%) is applied live across every product and your cart — no codes, no quotes for stock items. Need a formal quote? It's one click from the cart.</p>
-        </div>
-        <a class="btn btn-primary btn-lg" href="account.html">Access trade pricing</a>
-      </div>
     </div></section>
 
     <!-- FEATURED -->
@@ -94,10 +161,38 @@
   <footer data-footer></footer>
 
   <script src="data/catalog.js"></script>
-  <script src="assets/js/store.js?v=2"></script>
+  <script src="assets/js/store.js?v=3"></script>
   <script>
     (function () {
-      // ---- interactive 3D Scotty ----
+      var I_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+      var I_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg>';
+      var I_RESET = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg>';
+
+      function wireControls(scope) {
+        var v = scope.querySelector("model-viewer");
+        var spin = scope.querySelector("[data-spin]");
+        var reset = scope.querySelector("[data-reset]");
+        if (!v) return;
+        if (spin) {
+          spin.innerHTML = I_PAUSE;
+          spin.addEventListener("click", function () {
+            v.autoRotate = !v.autoRotate;
+            spin.innerHTML = v.autoRotate ? I_PAUSE : I_PLAY;
+            spin.setAttribute("aria-label", v.autoRotate ? "Pause rotation" : "Resume rotation");
+          });
+        }
+        if (reset) {
+          reset.innerHTML = I_RESET;
+          reset.addEventListener("click", function () {
+            v.cameraOrbit = "40deg 78deg 105%";
+            if (v.resetTurntableRotation) v.resetTurntableRotation();
+            v.autoRotate = true;
+            if (spin) { spin.innerHTML = I_PAUSE; spin.setAttribute("aria-label", "Pause rotation"); }
+          });
+        }
+      }
+
+      // ---- Scotty interactive 3D (progress + hotspots + controls) ----
       var viewer = document.getElementById("scottyViewer");
       if (viewer) {
         var bar = viewer.querySelector(".m-bar");
@@ -107,15 +202,13 @@
           if (bar) bar.style.width = (p * 100) + "%";
           if (mprog) mprog.style.opacity = p < 1 ? "1" : "0";
         });
-
-        // feature hotspots positioned from the model's own bounding box
         viewer.addEventListener("load", function () {
           var c = viewer.getBoundingBoxCenter();
           var d = viewer.getDimensions();
           var spots = [
-            { p: [c.x, c.y + d.y * 0.50, c.z],                 n: [0, 1, 0], t: "AI auto-tune",          s: "2-min setup · no programming" },
-            { p: [c.x + d.x * 0.50, c.y, c.z],                 n: [1, 0, 0], t: "1500W bi-directional",  s: "12 · 24 · 36 · 48V DC-DC" },
-            { p: [c.x, c.y - d.y * 0.12, c.z + d.z * 0.50],    n: [0, 0, 1], t: "VE.CAN",                s: "100% Victron compliant" }
+            { p: [c.x, c.y + d.y * 0.50, c.z],              n: [0, 1, 0], t: "AI auto-tune",         s: "2-min setup · no programming" },
+            { p: [c.x + d.x * 0.50, c.y, c.z],              n: [1, 0, 0], t: "1500W bi-directional", s: "12 · 24 · 36 · 48V DC-DC" },
+            { p: [c.x, c.y - d.y * 0.12, c.z + d.z * 0.50], n: [0, 0, 1], t: "VE.CAN",               s: "100% Victron compliant" }
           ];
           viewer.querySelectorAll('[slot^="hotspot"]').forEach(function (el) { el.remove(); });
           spots.forEach(function (sp, i) {
@@ -127,62 +220,72 @@
             viewer.appendChild(b);
           });
         });
-
-        // controls
-        var box = viewer.parentNode;
-        var spinBtn = box.querySelector("[data-spin]");
-        var resetBtn = box.querySelector("[data-reset]");
-        var I_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
-        var I_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg>';
-        var I_RESET = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg>';
-        if (spinBtn) {
-          spinBtn.innerHTML = I_PAUSE;
-          spinBtn.addEventListener("click", function () {
-            viewer.autoRotate = !viewer.autoRotate;
-            spinBtn.innerHTML = viewer.autoRotate ? I_PAUSE : I_PLAY;
-            spinBtn.setAttribute("aria-label", viewer.autoRotate ? "Pause rotation" : "Resume rotation");
-          });
-        }
-        if (resetBtn) {
-          resetBtn.innerHTML = I_RESET;
-          resetBtn.addEventListener("click", function () {
-            viewer.cameraOrbit = "40deg 78deg 105%";
-            if (viewer.resetTurntableRotation) viewer.resetTurntableRotation();
-            viewer.autoRotate = true;
-            if (spinBtn) { spinBtn.innerHTML = I_PAUSE; spinBtn.setAttribute("aria-label", "Pause rotation"); }
-          });
-        }
+        wireControls(viewer.closest(".pillar-media") || viewer.parentNode);
       }
 
-      // product count stat
+      // ---- other pillars auto-upgrade to 3D the moment their GLB exists ----
+      function mountViewer(m, glb, poster, alt) {
+        m.innerHTML =
+          '<model-viewer class="scotty-viewer" src="' + glb + '" poster="' + poster + '" alt="' + alt + '"' +
+          ' camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="500" rotation-per-second="18deg"' +
+          ' interaction-prompt="none" shadow-intensity="0.85" shadow-softness="1" exposure="1.0"' +
+          ' camera-orbit="40deg 78deg 105%" ar ar-modes="webxr scene-viewer quick-look">' +
+          '<button slot="ar-button" class="ar-btn">View in your space</button></model-viewer>' +
+          '<span class="viewer-badge mono"><span class="vb-dot"></span> Live 3D · drag to orbit</span>' +
+          '<div class="viewer-controls"><button class="vc-btn" data-spin aria-label="Pause rotation"></button>' +
+          '<button class="vc-btn" data-reset aria-label="Reset view"></button></div>';
+        wireControls(m);
+      }
+      document.querySelectorAll(".pillar-media[data-glb]").forEach(function (m) {
+        var glb = m.getAttribute("data-glb");
+        var poster = m.getAttribute("data-poster");
+        var img = m.querySelector("img");
+        var alt = img ? img.alt : "Safiery 3D model";
+        fetch(glb, { method: "HEAD" })
+          .then(function (r) { if (r.ok) mountViewer(m, glb, poster, alt); })
+          .catch(function () {});
+      });
+
+      // ---- scroll-reveal animation, pillar by pillar ----
+      var pillars = document.querySelectorAll("[data-pillar]");
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+        }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+        pillars.forEach(function (p) { io.observe(p); });
+      } else {
+        pillars.forEach(function (p) { p.classList.add("in"); });
+      }
+
+      // ---- homepage content ----
       var statEl = document.querySelector("[data-stat-products]");
       if (statEl) statEl.textContent = Store.catalog.products.length + "+";
 
-      // value props
       var values = [
         { ico: "shield", h: "Safest lithium made", p: "Solid-state cells survive a nail, 200kN crush, 2× overcharge and a dead short. Insurers welcome it." },
         { ico: "cycle", h: "10,000 cycles", p: "Double the life of prismatic or cylindrical lithium, at 80% depth of discharge." },
         { ico: "chip", h: "Victron native", p: "Everything talks VE.CAN / NMEA2000 and appears correctly on your Cerbo GX." },
         { ico: "truck", h: "Ships AU-wide", p: "In-stock items dispatched from Arundel QLD. Trade freight accounts welcome." }
       ];
-      document.querySelector("[data-values]").innerHTML = values.map(function (v) {
+      var valuesEl = document.querySelector("[data-values]");
+      if (valuesEl) valuesEl.innerHTML = values.map(function (v) {
         return '<div class="value"><div class="ico">' + Store.icon(v.ico) + '</div><h4>' + v.h + '</h4><p>' + v.p + '</p></div>';
       }).join("");
 
-      // categories (exclude keypad buttons + accessories from the headline grid → show 8 systems)
-      var cats = Store.categories.filter(function (c) { return ["star-buttons", "accessories"].indexOf(c.id) === -1; }).slice(0, 8);
-      document.querySelector("[data-cats]").innerHTML = cats.map(function (c) {
-        return '<a class="cat-card" href="shop.html?cat=' + c.id + '">' +
-          '<span class="ctag">' + c.tag + '</span>' +
-          '<div class="ico">' + Store.icon(c.glyph) + '</div>' +
-          '<div><h3>' + c.name + '</h3><p>' + c.blurb + '</p>' +
-          '<div class="more">' + Store.categoryCount(c.id) + ' products →</div></div></a>';
-      }).join("");
+      var catsEl = document.querySelector("[data-cats]");
+      if (catsEl) {
+        var cats = Store.categories.filter(function (c) { return ["star-buttons", "accessories"].indexOf(c.id) === -1; }).slice(0, 8);
+        catsEl.innerHTML = cats.map(function (c) {
+          return '<a class="cat-card" href="shop.html?cat=' + c.id + '">' +
+            '<span class="ctag">' + c.tag + '</span>' +
+            '<div class="ico">' + Store.icon(c.glyph) + '</div>' +
+            '<div><h3>' + c.name + '</h3><p>' + c.blurb + '</p>' +
+            '<div class="more">' + Store.categoryCount(c.id) + ' products →</div></div></a>';
+        }).join("");
+      }
 
-      // featured grid
       var grid = document.querySelector("[data-featured]");
-      grid._list = Store.featured();
-      Store.renderGrid(grid, grid._list);
+      if (grid) { grid._list = Store.featured(); Store.renderGrid(grid, grid._list); }
     })();
   </script>
 </body>
