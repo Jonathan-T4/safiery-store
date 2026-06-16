@@ -159,10 +159,10 @@ window.Store = (function () {
 
   /* ---------------- generated product art ---------------- */
   var CAT_COLOR = {
-    "12v-lithium": "#f6a623", "48v-lithium": "#f6a623", "scotty": "#34d6c6",
-    "bmg": "#6ea8fe", "star-switching": "#f6a623", "star-buttons": "#9fb0c3",
-    "tank": "#34d6c6", "cooktops": "#ff8a5b", "hot-water": "#46b6d1",
-    "jupiter": "#f6a623", "accessories": "#9fb0c3"
+    "12v-lithium": "#3E78BD", "48v-lithium": "#2c5a91", "scotty": "#4a90c2",
+    "bmg": "#5b6470", "star-switching": "#3E78BD", "star-buttons": "#8c9198",
+    "tank": "#4a90c2", "cooktops": "#6b7787", "hot-water": "#3E78BD",
+    "jupiter": "#2c5a91", "accessories": "#8c9198"
   };
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
   function productArt(product) {
@@ -174,14 +174,14 @@ window.Store = (function () {
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">' +
         '<defs>' +
           '<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">' +
-            '<stop offset="0" stop-color="#16222f"/><stop offset="1" stop-color="#0a0f16"/>' +
+            '<stop offset="0" stop-color="#f6f9fc"/><stop offset="1" stop-color="#e6edf4"/>' +
           '</linearGradient>' +
           '<radialGradient id="gl" cx="50%" cy="42%" r="55%">' +
-            '<stop offset="0" stop-color="' + col + '" stop-opacity="0.30"/>' +
+            '<stop offset="0" stop-color="' + col + '" stop-opacity="0.22"/>' +
             '<stop offset="1" stop-color="' + col + '" stop-opacity="0"/>' +
           '</radialGradient>' +
           '<pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">' +
-            '<path d="M26 0H0V26" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>' +
+            '<path d="M26 0H0V26" fill="none" stroke="#1b2a3f" stroke-opacity="0.05" stroke-width="1"/>' +
           '</pattern>' +
         '</defs>' +
         '<rect width="400" height="300" fill="url(#bg)"/>' +
@@ -189,7 +189,7 @@ window.Store = (function () {
         '<rect width="400" height="300" fill="url(#gl)"/>' +
         '<g transform="translate(150 75) scale(4.2)" fill="none" stroke="' + col + '" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">' + glyph + '</g>' +
         '<text x="20" y="280" fill="' + col + '" font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="1.5">' + esc(tag) + '</text>' +
-        '<text x="380" y="280" text-anchor="end" fill="#5f7185" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2">SAFIERY</text>' +
+        '<text x="380" y="280" text-anchor="end" fill="#9aa3ad" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2">SAFIERY</text>' +
       '</svg>';
     return "data:image/svg+xml," + encodeURIComponent(svg);
   }
@@ -281,7 +281,7 @@ window.Store = (function () {
       '<span class="hide-sm">AUD · GST registered · sales@safiery.com</span>' +
     '</div></div>' +
     '<div class="header-main"><div class="wrap">' +
-      '<a class="brand" href="index.html"><span class="mark">' + icon("bolt") + '</span> Safiery</a>' +
+      '<a class="brand" href="index.html" aria-label="Safiery — home"><img class="brand-logo" src="assets/img/safiery-logo.webp" alt="Safiery" width="350" height="293"></a>' +
       '<nav class="nav" aria-label="Primary">' + navlinks + '</nav>' +
       '<div class="header-actions">' +
         '<span class="trade-pill"><span class="blip"></span><span data-trade-label>TRADE</span></span>' +
@@ -300,7 +300,7 @@ window.Store = (function () {
     var catLinks = C.categories.slice(0, 6).map(function (c) { return '<li><a href="shop.html?cat=' + c.id + '">' + c.name + '</a></li>'; }).join("");
     return '<div class="wrap"><div class="footer-grid">' +
       '<div>' +
-        '<a class="brand" href="index.html"><span class="mark">' + icon("bolt") + '</span> Safiery</a>' +
+        '<a class="brand" href="index.html" aria-label="Safiery — home"><img class="brand-logo" src="assets/img/safiery-logo.webp" alt="Safiery" width="350" height="293"></a>' +
         '<p class="footer-tagline">Power, energy and switching products so people enjoy adventure travel globally — on land or water — without a genset.</p>' +
       '</div>' +
       '<div><h4>Shop</h4><ul>' + catLinks + '</ul></div>' +

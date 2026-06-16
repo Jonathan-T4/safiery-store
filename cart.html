@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cart — Safiery</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f6a623' d='M13 2L3 14h7l-1 8 10-12h-7z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="assets/img/safiery-logo-2021.png">
   <link rel="stylesheet" href="assets/css/store.css">
 </head>
 <body data-nav="cart.html">
@@ -44,7 +44,7 @@
       function line(it) {
         var p = it.product, pr = it.pricing;
         var unit = pr.isTrade
-          ? '<span class="mono b2b" style="color:var(--cyan)">' + Store.formatAUD(pr.effective) + '</span> <span class="mono" style="color:var(--text-mut);text-decoration:line-through;font-size:12px">' + Store.formatAUD(pr.base) + '</span>'
+          ? '<span class="mono b2b">' + Store.formatAUD(pr.effective) + '</span> <span class="mono" style="color:var(--text-mut);text-decoration:line-through;font-size:12px">' + Store.formatAUD(pr.base) + '</span>'
           : '<span class="mono">' + Store.formatAUD(pr.effective) + '</span>';
         return '<div class="cart-line" data-id="' + p.id + '">' +
           '<a class="thumb" href="product.html?id=' + p.id + '"><img src="' + Store.productArt(p) + '" alt=""></a>' +

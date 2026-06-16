@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Safiery — Genset-Free Power for Land &amp; Water</title>
   <meta name="description" content="Safiery solid-state lithium batteries, Scotty AI DC-DC, BMG alternators, STAR digital switching, tank monitoring and all-electric living. B2C &amp; trade pricing.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f6a623' d='M13 2L3 14h7l-1 8 10-12h-7z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="assets/img/safiery-logo-2021.png">
   <link rel="stylesheet" href="assets/css/store.css">
+  <script type="module" src="https://unpkg.com/@google/model-viewer@^3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body data-nav="shop.html">
   <header data-header></header>
@@ -29,7 +30,29 @@
           <div class="hero-stat"><div class="n">VE.CAN</div><div class="l">Victron native</div></div>
         </div>
       </div>
-      <div class="hero-visual" data-reveal style="animation-delay:.24s" data-hero-art></div>
+      <div class="hero-visual hero-3d" data-reveal style="animation-delay:.2s">
+        <model-viewer
+          id="scottyViewer"
+          class="scotty-viewer"
+          src="assets/models/scotty-1500-v3.glb"
+          poster="assets/img/scotty-poster.png"
+          alt="Interactive 3D model of the Scotty AI 1500W V3 bi-directional DC-DC converter"
+          camera-controls touch-action="pan-y"
+          auto-rotate auto-rotate-delay="500" rotation-per-second="20deg"
+          interaction-prompt="none"
+          shadow-intensity="0.85" shadow-softness="1"
+          exposure="1.0"
+          camera-orbit="40deg 78deg 105%"
+          ar ar-modes="webxr scene-viewer quick-look">
+          <button slot="ar-button" class="ar-btn">View in your space</button>
+          <div slot="progress-bar" class="m-progress"><div class="m-bar"></div></div>
+        </model-viewer>
+        <span class="viewer-badge mono"><span class="vb-dot"></span> Live 3D · drag to orbit</span>
+        <div class="viewer-controls">
+          <button class="vc-btn" data-spin aria-label="Pause rotation" title="Pause / resume spin"></button>
+          <button class="vc-btn" data-reset aria-label="Reset view" title="Reset view"></button>
+        </div>
+      </div>
     </div></div></section>
 
     <!-- VALUE PROPS -->
@@ -50,7 +73,7 @@
     <section class="section" style="padding-top:0"><div class="wrap">
       <div class="trade-banner" style="padding:30px 34px">
         <div style="flex:1; min-width:260px">
-          <span class="eyebrow" style="color:var(--cyan)">For resellers &amp; installers</span>
+          <span class="eyebrow">For resellers &amp; installers</span>
           <h2 style="font-size:30px; margin:10px 0 8px">Trade pricing, applied automatically.</h2>
           <p class="muted" style="margin:0; max-width:60ch">Log in and your B2BKing tier discount (10–32%) is applied live across every product and your cart — no codes, no quotes for stock items. Need a formal quote? It's one click from the cart.</p>
         </div>
@@ -74,12 +97,61 @@
   <script src="assets/js/store.js"></script>
   <script>
     (function () {
-      // hero art
-      var hero = document.querySelector("[data-hero-art]");
-      if (hero) {
-        hero.innerHTML = Store.icon("anchor");
-        var heroSvg = hero.querySelector("svg");
-        if (heroSvg) heroSvg.style.color = "var(--accent)";
+      // ---- interactive 3D Scotty ----
+      var viewer = document.getElementById("scottyViewer");
+      if (viewer) {
+        var bar = viewer.querySelector(".m-bar");
+        var mprog = viewer.querySelector(".m-progress");
+        viewer.addEventListener("progress", function (e) {
+          var p = e.detail.totalProgress;
+          if (bar) bar.style.width = (p * 100) + "%";
+          if (mprog) mprog.style.opacity = p < 1 ? "1" : "0";
+        });
+
+        // feature hotspots positioned from the model's own bounding box
+        viewer.addEventListener("load", function () {
+          var c = viewer.getBoundingBoxCenter();
+          var d = viewer.getDimensions();
+          var spots = [
+            { p: [c.x, c.y + d.y * 0.50, c.z],                 n: [0, 1, 0], t: "AI auto-tune",          s: "2-min setup · no programming" },
+            { p: [c.x + d.x * 0.50, c.y, c.z],                 n: [1, 0, 0], t: "1500W bi-directional",  s: "12 · 24 · 36 · 48V DC-DC" },
+            { p: [c.x, c.y - d.y * 0.12, c.z + d.z * 0.50],    n: [0, 0, 1], t: "VE.CAN",                s: "100% Victron compliant" }
+          ];
+          viewer.querySelectorAll('[slot^="hotspot"]').forEach(function (el) { el.remove(); });
+          spots.forEach(function (sp, i) {
+            var b = document.createElement("button");
+            b.className = "hp"; b.slot = "hotspot-" + i;
+            b.setAttribute("data-position", sp.p.join(" "));
+            b.setAttribute("data-normal", sp.n.join(" "));
+            b.innerHTML = '<span class="hp-dot"></span><span class="hp-card"><b>' + sp.t + '</b><span>' + sp.s + '</span></span>';
+            viewer.appendChild(b);
+          });
+        });
+
+        // controls
+        var box = viewer.parentNode;
+        var spinBtn = box.querySelector("[data-spin]");
+        var resetBtn = box.querySelector("[data-reset]");
+        var I_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+        var I_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg>';
+        var I_RESET = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg>';
+        if (spinBtn) {
+          spinBtn.innerHTML = I_PAUSE;
+          spinBtn.addEventListener("click", function () {
+            viewer.autoRotate = !viewer.autoRotate;
+            spinBtn.innerHTML = viewer.autoRotate ? I_PAUSE : I_PLAY;
+            spinBtn.setAttribute("aria-label", viewer.autoRotate ? "Pause rotation" : "Resume rotation");
+          });
+        }
+        if (resetBtn) {
+          resetBtn.innerHTML = I_RESET;
+          resetBtn.addEventListener("click", function () {
+            viewer.cameraOrbit = "40deg 78deg 105%";
+            if (viewer.resetTurntableRotation) viewer.resetTurntableRotation();
+            viewer.autoRotate = true;
+            if (spinBtn) { spinBtn.innerHTML = I_PAUSE; spinBtn.setAttribute("aria-label", "Pause rotation"); }
+          });
+        }
       }
 
       // product count stat

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trade Login — Safiery</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f6a623' d='M13 2L3 14h7l-1 8 10-12h-7z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="assets/img/safiery-logo-2021.png">
   <link rel="stylesheet" href="assets/css/store.css">
 </head>
 <body data-nav="account.html">
@@ -25,7 +25,7 @@
       function loggedOut() {
         root.innerHTML =
           '<div class="auth-card">' +
-            '<span class="eyebrow" style="color:var(--cyan)">B2B / Reseller</span>' +
+            '<span class="eyebrow" style="color:var(--brand)">B2B / Reseller</span>' +
             '<h1 style="margin-top:10px">Trade login</h1>' +
             '<p class="muted" style="margin-top:4px">Log in to unlock your B2BKing tier pricing across the whole store. Guests are charged standard retail.</p>' +
             '<form data-form>' +
@@ -67,10 +67,10 @@
         var sample = ["ss-48v-3c", "scotty-3kw-1248", "star-power"].map(Store.byId).filter(Boolean);
         var rows = sample.map(function (p) {
           var pr = Store.pricing(p);
-          return '<tr><td>' + Store.esc(p.name) + '</td><td style="text-decoration:line-through;color:var(--text-mut)">' + Store.formatAUD(pr.base) + '</td><td style="color:var(--cyan)">' + Store.formatAUD(pr.effective) + '</td></tr>';
+          return '<tr><td>' + Store.esc(p.name) + '</td><td style="text-decoration:line-through;color:var(--text-mut)">' + Store.formatAUD(pr.base) + '</td><td style="color:var(--brand)">' + Store.formatAUD(pr.effective) + '</td></tr>';
         }).join("");
         root.innerHTML =
-          '<div class="section-head" style="margin:30px 0 20px"><div><span class="eyebrow" style="color:var(--cyan)">Account</span><h2>Trade dashboard</h2></div>' +
+          '<div class="section-head" style="margin:30px 0 20px"><div><span class="eyebrow" style="color:var(--brand)">Account</span><h2>Trade dashboard</h2></div>' +
             '<button class="btn btn-ghost" data-logout>Log out</button></div>' +
           '<div class="trade-banner" style="margin-bottom:24px">' + Store.icon("shield") +
             '<div style="flex:1"><strong>' + Store.esc(s.company || s.email) + '</strong><div class="muted mono" style="font-size:12px">' + Store.esc(s.email) + '</div></div>' +
@@ -88,8 +88,8 @@
               '<h3>Trade tiers</h3>' +
               Store.catalog.b2bTiers.map(function (x) {
                 var on = x.id === t.id;
-                return '<div class="sum-row" style="' + (on ? 'color:var(--cyan)' : '') + '">' + x.name +
-                  '<span class="v" style="' + (on ? 'color:var(--cyan)' : '') + '">−' + Math.round(x.discount*100) + '%</span></div>';
+                return '<div class="sum-row" style="' + (on ? 'color:var(--brand)' : '') + '">' + x.name +
+                  '<span class="v" style="' + (on ? 'color:var(--brand)' : '') + '">−' + Math.round(x.discount*100) + '%</span></div>';
               }).join("") +
               '<p class="muted" style="font-size:12.5px;margin-top:14px">Tiers mirror your B2BKing group. Contact sales to move tiers.</p>' +
             '</aside>' +
