@@ -14,7 +14,7 @@
 
   <main id="main" tabindex="-1">
     <!-- HERO -->
-    <section class="hero hero--center"><div class="wrap">
+    <section id="s-hero" class="hero hero--center"><div class="wrap">
       <span class="eyebrow" data-reveal style="animation-delay:.05s">Marine · RV · Off-grid power systems</span>
       <h1 data-reveal style="animation-delay:.12s">Adventure <span class="hl">without</span> a genset.</h1>
       <p class="lede" data-reveal style="animation-delay:.2s">Solid-state lithium, AI-tuned DC-DC, bi-directional motor generators and Victron-native digital switching — the complete electric power system for living and travelling anywhere, silently.</p>
@@ -38,7 +38,7 @@
       </div>
 
       <!-- 01 · Scotty (interactive 3D, media right) -->
-      <div class="pillar" data-pillar>
+      <div id="s-scotty" class="pillar" data-pillar>
         <div class="pillar-body">
           <span class="pillar-num">01</span>
           <span class="eyebrow">Scotty AI DC-DC</span>
@@ -75,9 +75,10 @@
           </div>
         </div>
       </div>
+      <div class="pillar-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
       <!-- 02 · BMG (media left, 3D-ready) -->
-      <div class="pillar pillar--media-left" data-pillar>
+      <div id="s-bmg" class="pillar pillar--media-left" data-pillar>
         <div class="pillar-media" data-glb="assets/models/bmg.glb" data-poster="assets/img/pillar-bmg.webp">
           <img class="pillar-img" src="assets/img/pillar-bmg.webp" alt="Safiery 48V Bi-directional Motor Generator with Scotty AI and cabling kit">
         </div>
@@ -94,9 +95,10 @@
           <a class="btn btn-primary" href="shop.html?cat=bmg">Explore BMG →</a>
         </div>
       </div>
+      <div class="pillar-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
       <!-- 03 · Solid State Lithium (media right) -->
-      <div class="pillar" data-pillar>
+      <div id="s-battery" class="pillar" data-pillar>
         <div class="pillar-body">
           <span class="pillar-num">03</span>
           <span class="eyebrow">Solid State Lithium</span>
@@ -113,9 +115,10 @@
           <img class="pillar-img" src="assets/img/pillar-battery.webp" alt="Safiery solid-state lithium battery range, 12V and 48V">
         </div>
       </div>
+      <div class="pillar-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
       <!-- 04 · STAR Switching (media left) -->
-      <div class="pillar pillar--media-left" data-pillar>
+      <div id="s-star" class="pillar pillar--media-left" data-pillar>
         <div class="pillar-media" data-glb="assets/models/star.glb" data-poster="assets/img/pillar-star.webp">
           <img class="pillar-img" src="assets/img/pillar-star.webp" alt="Safiery STAR digital switching plugged into a Victron Cerbo">
         </div>
@@ -159,6 +162,24 @@
   </main>
 
   <footer data-footer></footer>
+
+  <nav class="dot-nav" aria-label="Page sections">
+    <button class="dot-nav-btn active" data-target="s-hero" aria-label="Top">
+      <span class="dot-nav-pip"></span><span class="dot-nav-label">Home</span>
+    </button>
+    <button class="dot-nav-btn" data-target="s-scotty" aria-label="Scotty AI">
+      <span class="dot-nav-pip"></span><span class="dot-nav-label">Scotty AI</span>
+    </button>
+    <button class="dot-nav-btn" data-target="s-bmg" aria-label="Motor Generator">
+      <span class="dot-nav-pip"></span><span class="dot-nav-label">BMG</span>
+    </button>
+    <button class="dot-nav-btn" data-target="s-battery" aria-label="Batteries">
+      <span class="dot-nav-pip"></span><span class="dot-nav-label">Battery</span>
+    </button>
+    <button class="dot-nav-btn" data-target="s-star" aria-label="STAR Switching">
+      <span class="dot-nav-pip"></span><span class="dot-nav-label">STAR</span>
+    </button>
+  </nav>
 
   <script src="data/catalog.js"></script>
   <script src="assets/js/store.js?v=3"></script>
@@ -286,6 +307,46 @@
 
       var grid = document.querySelector("[data-featured]");
       if (grid) { grid._list = Store.featured(); Store.renderGrid(grid, grid._list); }
+    })();
+
+    // ---- dot nav + separator reveal ----
+    (function () {
+      var btns = document.querySelectorAll(".dot-nav-btn");
+      var seps = document.querySelectorAll(".pillar-sep");
+
+      // track active section
+      var secIds = ["s-hero","s-scotty","s-bmg","s-battery","s-star"];
+      if ("IntersectionObserver" in window) {
+        var secObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              btns.forEach(function (b) {
+                b.classList.toggle("active", b.dataset.target === e.target.id);
+              });
+            }
+          });
+        }, { threshold: 0, rootMargin: "-30% 0px -60% 0px" });
+        secIds.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) secObs.observe(el);
+        });
+
+        // separator reveal
+        var sepObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("sep-on"); sepObs.unobserve(e.target); }
+          });
+        }, { threshold: 0.7 });
+        seps.forEach(function (s) { sepObs.observe(s); });
+      }
+
+      // click to scroll
+      btns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var el = document.getElementById(btn.dataset.target);
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
     })();
   </script>
 </body>
