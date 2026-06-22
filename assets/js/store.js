@@ -381,7 +381,8 @@ window.Store = (function () {
     { href: "shop.html?cat=scotty", label: "Scotty AI" },
     { href: "shop.html?cat=bmg", label: "BMG" },
     { href: "shop.html?cat=star-switching", label: "STAR Switching" },
-    { href: "shop.html?cat=jupiter", label: "Jupiter Packs" }
+    { href: "shop.html?cat=jupiter", label: "Jupiter Packs" },
+    { href: "news.html", label: "News" }
   ];
   function headerHTML(active) {
     var navlinks = NAV.map(function (n) {
