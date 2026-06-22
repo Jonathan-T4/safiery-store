@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News — Safiery</title>
+  <meta name="description" content="The latest from Safiery: product launches, open marine operating systems, energy architecture and company news.">
+  <link rel="icon" type="image/png" href="assets/img/safiery-logo-2021.png">
+  <link rel="stylesheet" href="assets/css/store.css?v=2">
+</head>
+<body data-nav="news.html">
+  <header data-header></header>
+
+  <main id="main" tabindex="-1"><div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span>News</span></div>
+    <div class="section-head" style="margin:18px 0 18px">
+      <div><span class="eyebrow">Latest</span><h2>News &amp; Updates</h2><p>Product launches, open marine operating systems, energy architecture and company news.</p></div>
+    </div>
+
+    <div class="news-grid" data-news aria-live="polite">
+      <p class="news-status">Loading the latest news…</p>
+    </div>
+  </div></main>
+
+  <footer data-footer></footer>
+
+  <script src="data/catalog.js"></script>
+  <script src="data/catalog-links.js"></script>
+  <script src="data/catalog-merge.js"></script>
+  <script src="assets/js/store.js?v=3"></script>
+  <script>
+    (function () {
+      // Quasar HQ (ERP) origin — same source the catalogue feed uses. Override with
+      // window.SAFIERY_ERP_BASE before this script if it ever changes.
+      var ERP_BASE = (window.SAFIERY_ERP_BASE || "https://quasar-safiery-967.netlify.app").replace(/\/+$/, "");
+      var grid = document.querySelector("[data-news]");
+
+      function esc(s) { var d = document.createElement("div"); d.textContent = String(s == null ? "" : s); return d.innerHTML; }
+      function fmtDate(d) {
+        if (!d) return "";
+        try { return new Date(d).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }); }
+        catch (e) { return ""; }
+      }
+      function status(msg) { grid.innerHTML = '<p class="news-status">' + esc(msg) + "</p>"; }
+
+      function card(n) {
+        var tags = (n.tags || []).map(function (t) { return '<span class="news-tag">' + esc(t) + "</span>"; }).join("");
+        var media = n.image ? '<div class="news-media"><img src="' + esc(n.image) + '" alt="' + esc(n.title) + '" loading="lazy"></div>' : "";
+        var lead = n.summary || n.body || "";
+        var body = (n.body && n.body !== n.summary) ? '<p class="news-body">' + esc(n.body) + "</p>" : "";
+        var more = n.link ? '<a class="news-more" href="' + esc(n.link) + '" target="_blank" rel="noopener">Read more →</a>' : "";
+        return '<article class="news-card">' +
+            media +
+            '<div class="news-card-body">' +
+              '<div class="news-date">' + esc(fmtDate(n.date)) + "</div>" +
+              '<h3 class="news-title">' + esc(n.title) + "</h3>" +
+              (tags ? '<div class="news-tags">' + tags + "</div>" : "") +
+              (lead ? '<p class="news-excerpt">' + esc(lead) + "</p>" : "") +
+              body +
+              more +
+            "</div>" +
+          "</article>";
+      }
+
+      function render(items) {
+        if (!items || !items.length) { status("No news yet — check back soon."); return; }
+        grid.innerHTML = items.map(card).join("");
+      }
+
+      var timeout = new Promise(function (res) { setTimeout(function () { res(null); }, 6000); });
+      var fetchP = fetch(ERP_BASE + "/.netlify/functions/store-news", { headers: { "Accept": "application/json" } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; });
+
+      Promise.race([fetchP, timeout]).then(function (feed) {
+        if (feed && feed.ok && Array.isArray(feed.items)) render(feed.items);
+        else status("News is taking a moment to load. Please refresh shortly.");
+      });
+    })();
+  </script>
+</body>
+</html>

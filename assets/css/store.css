@@ -548,3 +548,71 @@ select.field { appearance: none; padding-right: 32px; background-image: url("dat
 .pillar-sep.sep-on span { opacity: 1; transform: none; }
 
 @media (max-width: 900px) { .dot-nav { display: none; } }
+
+/* =============================================================================
+   News tab (news.html) — fed by the ERP store-news endpoint
+   ========================================================================== */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+  margin: 0 0 56px;
+}
+.news-status {
+  grid-column: 1 / -1;
+  color: var(--text-mut);
+  font-size: 15px;
+  padding: 40px 0;
+  text-align: center;
+}
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+.news-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); border-color: var(--line-2); }
+.news-media { aspect-ratio: 16 / 9; background: var(--tile); overflow: hidden; }
+.news-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.news-card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; }
+.news-date {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--brand-ink);
+}
+.news-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0;
+}
+.news-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.news-tag {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  background: var(--brand-tint);
+  border: 1px solid var(--brand-tint2);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.news-excerpt { color: var(--text-dim); font-size: 14.5px; line-height: 1.6; margin: 0; }
+.news-body { color: var(--text-dim); font-size: 14px; line-height: 1.65; margin: 0; }
+.news-more {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--brand);
+  text-decoration: none;
+}
+.news-more:hover { color: var(--brand-ink); text-decoration: underline; }
+@media (max-width: 560px) { .news-grid { grid-template-columns: 1fr; gap: 16px; } .news-title { font-size: 19px; } }
