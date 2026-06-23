@@ -350,7 +350,7 @@ window.Store = (function () {
           (badges ? '<div class="pbadges">' + badges + '</div>' : "") +
           '<div class="pcard-foot">' +
             priceHTML(product) +
-            '<button class="btn btn-primary btn-sm" data-add="' + product.id + '" aria-label="Add ' + esc(product.name) + ' to cart">' + icon("cart") + '</button>' +
+            '<button class="btn btn-primary btn-sm" data-add="' + product.id + '" aria-label="Add ' + esc(product.name) + ' to cart">' + icon("cart") + 'Add</button>' +
           '</div>' +
         '</div>' +
       '</article>';
